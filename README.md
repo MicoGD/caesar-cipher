@@ -7,6 +7,6 @@ Slightly different brainteasers on PHP
 * Some puzzles
 
 ### How set up ###
-* **git clone https://robotomize@bitbucket.org/robotomize/puzzlesphp.git**
+* **git clone https://github.com/robotomize/puzzlesPHP.git**
 * install composer
 * composer update
