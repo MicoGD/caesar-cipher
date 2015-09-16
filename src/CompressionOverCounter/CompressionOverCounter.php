@@ -8,10 +8,13 @@
 
 namespace CompressionOverCounter;
 
+include 'vendor/autoload.php';
 include 'AbstractCompress.php';
 include 'StringIterator.php';
 
 use Psr\Log\InvalidArgumentException;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 /**
  * Class CompressionOverCounter
@@ -59,11 +62,12 @@ class CompressionOverCounter extends AbstractCompress
      */
     private function iterationProcess()
     {
+        $log = new Logger('Compress algo logger');
+        $log->pushHandler(new StreamHandler('comporess.log', Logger::WARNING));
         $values = str_split($this->sourceString);
+        $log->addWarning($this->sourceString);
         $iterObj = new StringIterator($values);
         foreach ($iterObj as $a => $b) {
-            // @TODO doing
-            // monolog iteration proccess  save to text file
         }
         $this->compressString = $iterObj->getStringCompress();
         $this->compressLength = strlen($this->compressString);

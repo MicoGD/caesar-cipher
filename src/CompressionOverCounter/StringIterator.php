@@ -32,17 +32,17 @@ class StringIterator implements \Iterator
     /**
      * @var string
      */
-    private $curr = '';
+    public $curr = '';
 
     /**
      * @var string
      */
-    private $next = '';
+    public $next = '';
 
     /**
      * @var int
      */
-    private $iter = 1;
+    public $iter = 1;
 
     /**
      * @param $array
@@ -101,14 +101,23 @@ class StringIterator implements \Iterator
     {
         $var = next($this->var);
         $this->next = $var;
+
         if ($this->curr == $this->next) {
+            if ($this->iter == 2) {
+                $this->stringCompress = $this->stringCompress . $this->curr;
+            }
             $this->iter++;
         } else {
             if ($this->iter == 1) {
                 $this->stringCompress = $this->stringCompress . $this->curr;
             } else {
-                $this->stringCompress = $this->stringCompress . $this->iter;
-                $this->iter = 1;
+                if ($this->iter == 2) {
+                    $this->stringCompress = $this->stringCompress . $this->curr . 1;
+                    $this->iter = 1;
+                } else {
+                    $this->stringCompress = $this->stringCompress . ($this->iter - 1);
+                    $this->iter = 1;
+                }
             }
         }
 
