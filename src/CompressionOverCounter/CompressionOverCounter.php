@@ -2,12 +2,12 @@
 
 /**
  *
- * User: robotomize
- * Date: 16.09.15
- * Time: 0:37
+ * @author robotomize@gmail.com
  */
 
 namespace CompressionOverCounter;
+
+use Psr\Log\InvalidArgumentException;
 
 class CompressOverCounter extends AbstractCompress
 {
@@ -18,6 +18,9 @@ class CompressOverCounter extends AbstractCompress
 
     public function __construct($sourceString)
     {
+        if (!is_string($sourceString)) {
+            throw new InvalidArgumentException;
+        }
         $this->sourceString = $sourceString;
         $this->sourceLength = strlen($sourceString);
         $this->compress();
