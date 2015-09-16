@@ -12,17 +12,41 @@
 
 namespace CompressionOverCounter;
 
-
+/**
+ * Class StringIterator
+ * @author robotomize@gmail.com
+ * @package CompressionOverCounter
+ */
 class StringIterator implements \Iterator
 {
+    /**
+     * @var array
+     */
     private $var = array();
 
+    /**
+     * @var string
+     */
     public $stringCompress = '';
 
+    /**
+     * @var string
+     */
     private $curr = '';
+
+    /**
+     * @var string
+     */
     private $next = '';
+
+    /**
+     * @var int
+     */
     private $iter = 1;
 
+    /**
+     * @param $array
+     */
     public function __construct($array)
     {
         if (is_array($array)) {
@@ -31,16 +55,26 @@ class StringIterator implements \Iterator
         $this->iter = 1;
     }
 
+    /**
+     * @return string
+     */
     public function getStringCompress()
     {
         return $this->stringCompress;
     }
 
+    /**
+     * rewind iterator
+     */
     public function rewind()
     {
         reset($this->var);
     }
 
+    /**
+     * save the current value
+     * @return mixed
+     */
     public function current()
     {
         $var = current($this->var);
@@ -48,6 +82,10 @@ class StringIterator implements \Iterator
         return $var;
     }
 
+    /**
+     * key iterator
+     * @return mixed
+     */
     public function key()
     {
         $var = key($this->var);
@@ -55,6 +93,10 @@ class StringIterator implements \Iterator
         return $var;
     }
 
+    /**
+     * save the next value
+     * @return mixed
+     */
     public function next()
     {
         $var = next($this->var);
@@ -73,6 +115,10 @@ class StringIterator implements \Iterator
         return $var;
     }
 
+    /**
+     * Validation iter param
+     * @return bool
+     */
     public function valid()
     {
         $key = key($this->var);
@@ -81,14 +127,3 @@ class StringIterator implements \Iterator
     }
 
 }
-
-/*
-$values = str_split('fdgssssssjffffdjjjjjfgdkkkksssfjgkdjj');
-
-$it = new StringIterator($values);
-
-foreach ($it as $a => $b) {
-
-}
-print $it->getStringCompress();
-*/
