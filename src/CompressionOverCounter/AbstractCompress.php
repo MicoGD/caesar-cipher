@@ -8,7 +8,7 @@
 namespace CompressionOverCounter;
 
 
-class AbstractCompress
+abstract class AbstractCompress
 {
-
+    abstract public function compress();
 }

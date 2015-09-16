@@ -27,20 +27,27 @@ class CompressOverCounter extends AbstractCompress
 
     }
 
-    private function iteriorSymbols($start, $end, $step = 1)
+    private function iterationProcess()
     {
-        for ($i = $start; $i <= $end; $i += $step) {
-            yield $i;
+        $values = str_split($this->sourceString);
+        $iterObj = new StringIterator($values);
+        foreach ($iterObj as $a => $b) {
+            // @TODO doing
+            // monolog iteration proccess  save to text file
         }
+        $this->compressString = $iterObj->getStringCompress();
+        $this->compressLength = strlen($this->compressString);
     }
 
-    private function compress()
+    public function compress()
     {
-
+        $this->iterationProcess();
         if ($this->compressLength > $this->sourceLength) {
             $this->compressString = $this->sourceString;
         }
-        return false;
+
+        return $this->compressString;
+
     }
 
     public function getCompressString()
@@ -51,7 +58,7 @@ class CompressOverCounter extends AbstractCompress
     function __toString()
     {
         // TODO: Implement __toString() method.
-        return '';
+        return (!empty($this->compressString) ? $this->compressString : '');
     }
 
     function __invoke()
