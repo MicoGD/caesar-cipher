@@ -10,7 +10,7 @@ namespace UserGenerator;
  *
  *    ini_set('max_execution_time', 36000);
  *    ini_set('memory_limit', '2000M');
- *    $generator = new userGenerator();
+ *    $generator = new UserGenerator();
  *    $generator->run(500000);
  *    echo "complete";
  *    //print_r($generator->getUserValue());
@@ -64,6 +64,7 @@ class UserGenerator
     public function run($cnt)
     {
 
+        $this->countUser = 0;
         for ($i = 0; $i < $cnt; $i++) {
             $query = $this->generateQuery($i);
             echo "generating user " . $i . " ... ";
@@ -77,7 +78,7 @@ class UserGenerator
      */
     private function generateQuery($id)
     {
-        $date = new DateTime('1960-01-01');
+        $date = new \DateTime('1960-01-01');
 
         $this->userValue[] = [
 
@@ -107,5 +108,24 @@ class UserGenerator
         }
         return $word;
     }
+
+    /**
+     * user dump
+     */
+    function __invoke()
+    {
+        print_r($this->userValue);
+    }
+
+    /**
+     * @return string
+     */
+    function __toString()
+    {
+        return serialize($this->userValue);
+    }
+
+
+
 }
 

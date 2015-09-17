@@ -5,6 +5,12 @@ namespace test;
 require_once '../../src/CompressionOverCounter/CompressFactory.php';
 require_once '../../src/CompressionOverCounter/CompressionOverCounter.php';
 
+/**
+ * Class CompressTest
+ * @package test
+ * @author robotomzie@gmail.com
+ * @usage simple compress test
+ */
 class CompressTest extends \PHPUnit_Framework_TestCase
 {
     public function testCommonCompress()
