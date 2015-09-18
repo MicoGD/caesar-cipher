@@ -4,8 +4,9 @@ Slightly different brainteasers on PHP
 
 ### What is this repository for? ###
 
-* simple string compressor
-* simple user generator
+* Simple string compressor
+* Simple user generator
+* Dealer shuffling cards 
 
 ### How set up ###
 * **git clone https://github.com/robotomize/puzzlesPHP.git**
