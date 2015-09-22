@@ -9,6 +9,7 @@ Slightly different brainteasers on PHP
 * Dealer shuffling cards 
 
 ### How set up ###
+* @TODO create autoload
 * **git clone https://github.com/robotomize/puzzlesPHP.git**
 * install composer
 * composer update
