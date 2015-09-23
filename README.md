@@ -10,6 +10,7 @@ Slightly different brainteasers on PHP
 * ini configuration parser in an associative array
 
 ### How set up ###
+* @TODO create autoload
 * **git clone https://github.com/robotomize/puzzlesPHP.git**
 * install composer
 * composer update
