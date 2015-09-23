@@ -6,7 +6,8 @@ Slightly different brainteasers on PHP
 
 * Simple string compressor
 * Simple user generator
-* Dealer shuffling cards 
+* Dealer shuffling cards
+* ini configuration parser in an associative array
 
 ### How set up ###
 * **git clone https://github.com/robotomize/puzzlesPHP.git**
