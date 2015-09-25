@@ -11,6 +11,7 @@ Slightly different brainteasers on PHP
 
 ### How set up ###
 * **@TODO create autoload**
+* add more tests
 * **git clone https://github.com/robotomize/puzzlesPHP.git**
 * install composer
 * composer update
