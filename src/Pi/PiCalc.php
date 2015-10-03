@@ -92,6 +92,4 @@ class PiCalc
             throw new \Exception('Precision not found');
         }
     }
-
-
 }

@@ -7,6 +7,11 @@ use Pi\PiFactory;
 require_once '../../src/Pi/PiCalc.php';
 require_once '../../src/Pi/PiFactory.php';
 
+/**
+ * Class PiCalcTest
+ * @package test
+ * @author robotomize@gmail.com
+ */
 class PiCalcTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -33,6 +38,9 @@ class PiCalcTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1002, (int)strlen(PiFactory::makePi(1000)->bcPi()));
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testPi()
     {
         $this->assertTrue(PiFactory::makePi(rand(0, 99))->bcPi() != '' ? true : false);
