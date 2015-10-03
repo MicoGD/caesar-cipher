@@ -3,7 +3,7 @@
 namespace Pi;
 
 /**
- * Class PiFinder
+ * Class PiFinder - Find the offset sequence number in Pi.
  * @package Pi
  * @author robotomize@gmail.com
  * @usage
@@ -88,22 +88,40 @@ class PiFinder
         return $this->matherArray;
     }
 
+    /**
+     * @var string
+     */
+    private $matcher = '';
 
-    function __construct($fileName, $mather)
+    /**
+     * @return string
+     */
+    public function getMatcher()
     {
-        if (!empty($fileName) || !empty($mather)) {
+        return $this->matcher;
+    }
+
+    /**
+     * @param string $matcher
+     */
+    public function setMatcher($matcher)
+    {
+        $this->matcher = $matcher;
+
+    }
+
+    function __construct($fileName, $matcher)
+    {
+        if (!empty($fileName) || !empty($matcher)) {
             if (file_exists($fileName)) {
                 $this->fileName = $fileName;
+                $this->mather = $matcher;
             } else {
                 throw new \Exception('File don\'t exist');
             }
         } else {
             throw new \InvalidArgumentException;
         }
-
-        $this->matherArray = str_split($mather);
-        $this->parserIterNotify = count($this->matherArray);
-
     }
 
     /**
@@ -118,7 +136,6 @@ class PiFinder
     {
         return $this->parserIterNotify;
     }
-
 
     /**
      * @var int
@@ -169,7 +186,12 @@ class PiFinder
      */
     private function loadData()
     {
+
+        $this->matherArray = str_split($this->mather);
+        $this->parserIterNotify = count($this->matherArray);
+
         $this->globalParserIter = 0;
+        
         try {
             $this->piString = file_get_contents($this->fileName);
             $this->PiDigitArray = str_split($this->piString);
@@ -182,39 +204,68 @@ class PiFinder
     }
 
     /**
+     * Simple progress bar
+     *
+     * @return bool|string
+     */
+    private function simpleProgressBar()
+    {
+        if (rand(0, 100) === 24) {
+            return sprintf('Process: %s%s', '%', (round($this->getGlobalParserIter() / $this->getCountPidDigitArray(), 2) * 100)) . PHP_EOL;
+        } elseif (rand(0, 100) === 67) {
+            return sprintf('Max stack is: %s', $this->getMaxParserIter()) . PHP_EOL;
+        }
+        return false;
+
+    }
+
+    /**
+     * @var int
+     */
+    private $shiftIndex = 0;
+
+    /**
+     * Get final result shift index
+     * @return int
+     */
+    public function getShiftIndex()
+    {
+        return $this->shiftIndex;
+    }
+
+    /**
      * Main func for parsing plain data
+     *
      * @return int|string
      */
-    public function runParse()
+    public function run()
     {
         $this->loadData();
 
         foreach ($this->PiDigitArray as $kk => $vv) {
-            foreach($this->matherArray as $values) {
-                if ($vv == $values) {
-                    $this->parserIter++;
-                    if ($this->parserIter == $this->parserIterNotify) {
-                        return $kk;
-                    }
-                } else {
-                    if ($this->parserIter > $this->maxParserIter) {
-                        $this->maxParserIter = $this->parserIter;
-                    }
-                    $this->parserIter = 0;
+            if ($vv == $this->matherArray[$this->parserIter]) {
+                $this->parserIter++;
+                if ($this->parserIter == $this->parserIterNotify) {
+                    $this->shiftIndex = ($kk + 1) - ($this->parserIterNotify - 1);
+                    return ($kk + 1) - ($this->parserIterNotify - 1);
                 }
+            } else {
+                if ($this->parserIter > $this->maxParserIter) {
+                    $this->maxParserIter = $this->parserIter;
+                }
+                $this->parserIter = 0;
             }
+
             $this->globalParserIter++;
-            if (rand(0, 10) === 8) {
-                print sprintf('Process: %s%', round($this->getCountPidDigitArray() / $this->getGlobalParserIter(), 2) * 100) . PHP_EOL;
-            }
 
-            if (rand(0, 10) === 7) {
-                print sprintf('Max stack is: %s', $this->getMaxParserIter()) . PHP_EOL;
-            }
+            $helper = $this->simpleProgressBar();
 
+            if ($helper !== false) {
+                print $helper . PHP_EOL;
+            }
         }
 
-        return 'Not found';
+        return 'No matches found';
     }
 
     /**
