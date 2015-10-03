@@ -4,6 +4,7 @@ namespace UserGenerator;
 
 /**
  * Class UserGenerator
+ *
  * @package UserGenerator
  * @author @brujeo, robotomize@gmail.com modification
  * @usage
@@ -93,6 +94,7 @@ class UserGenerator
 
     /**
      * @param $length
+     *
      * @return string
      */
     private function generateWord($length)

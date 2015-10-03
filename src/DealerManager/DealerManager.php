@@ -4,6 +4,7 @@ namespace DealerManager;
 
 /**
  * Class DealerManager
+ *
  * Dealer shuffling cards
  * @package DealerManager
  * @author robotomzie@gmail.com

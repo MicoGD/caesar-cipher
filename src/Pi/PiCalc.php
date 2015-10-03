@@ -42,6 +42,7 @@ class PiCalc
 
     /**
      * @param $n
+     *
      * @return int|string
      */
     private function bcFact($n)
@@ -68,6 +69,7 @@ class PiCalc
 
     /**
      * @return string
+     *
      * @throws \Exception
      */
     function __invoke()

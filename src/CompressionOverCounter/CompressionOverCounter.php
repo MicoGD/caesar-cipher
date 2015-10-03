@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Algo for string compress. If the string contains recurring characters we write the number.
- * @version 0.2.2
- * @author robotomize@gmail.com
- */
-
 namespace CompressionOverCounter;
 
 include 'vendor/autoload.php';
@@ -18,6 +12,7 @@ use Monolog\Handler\StreamHandler;
 
 /**
  * Class CompressionOverCounter
+ *
  * @package CompressionOverCounter
  * @version 0.1
  * @author robotomize@gmail.com
@@ -75,6 +70,7 @@ class CompressionOverCounter extends AbstractCompress
 
     /**
      * The implementation of an abstract method. Main compress method.
+     *
      * @return string
      */
     public function compress()

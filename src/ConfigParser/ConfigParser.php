@@ -10,11 +10,11 @@ namespace ConfigParser;
  * @version 0.1
  *
  * Test Case
-db.user = vasya
-name.user = petya
-db.password = as123
-db.driver.type = mysql
-['db' => ['user' => 'vasya', 'password' => 'asd123', 'driver' => ...]]
+    db.user = vasya
+    name.user = petya
+    db.password = as123
+    db.driver.type = mysql
+    ['db' => ['user' => 'vasya', 'password' => 'asd123', 'driver' => ...]]
  *
  * @usage
  *
@@ -32,12 +32,14 @@ class ConfigParser
 
     /**
      * Finally result array
+     *
      * @var array
      */
     private $resultArray = [];
 
     /**
      * Intermediate array
+     *
      * @var array
      */
     private $determArray = [];
@@ -98,9 +100,11 @@ class ConfigParser
     }
 
     /**
-     * recurs array parsing here
+     * Recurs array parsing here
+     *
      * @param array $in
      * @param string $separator
+     *
      * @return array
      */
     private function recurSeparateToDelim(array $in, $separator = '.') {
@@ -119,7 +123,8 @@ class ConfigParser
     }
 
     /**
-     * current ini line
+     * Current ini line
+     *
      * @param $line
      */
     private function createDetermArray($line)
