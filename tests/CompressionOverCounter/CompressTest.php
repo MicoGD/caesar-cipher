@@ -7,6 +7,7 @@ require_once '../../src/CompressionOverCounter/CompressionOverCounter.php';
 
 /**
  * Class CompressTest
+ *
  * @package test
  * @author robotomzie@gmail.com
  * @usage simple compress test

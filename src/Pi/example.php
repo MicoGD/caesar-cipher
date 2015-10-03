@@ -1,13 +1,12 @@
 <?php
+/**
+ * Change this option
+ */
+ini_set('memory_limit', '1024M');
 
-use Pi\PiFactory;
+use Pi\PiFinder;
 
-require_once 'PiFactory.php';
+require_once 'PiFinder.php';
 
-$tt  = PiFactory::makePi(4000)->bcPi();
-$pos = strripos($tt, '2148400');
-if ($pos == false) {
-    print 'Ничего не найдено' . PHP_EOL;
-} else {
-    print sprintf('Последнее вхождение строки %s - %s', '2148400', $pos) . PHP_EOL;
-}
+$tt = new PiFinder('/Users/robotomize/Desktop/pi-10million.txt', '2148400');
+print $tt->run();

@@ -1,7 +1,6 @@
 <?php
 /**
  * My compress iterator
- * @author robotomize
  * @version rev 0.2.1
  * @usage $t = new StringIterator($sampleArray)
  * foreach($t as $k => $v) {
@@ -14,6 +13,7 @@ namespace CompressionOverCounter;
 
 /**
  * Class StringIterator
+ *
  * @author robotomize@gmail.com
  * @package CompressionOverCounter
  */
@@ -73,6 +73,7 @@ class StringIterator implements \Iterator
 
     /**
      * save the current value
+     *
      * @return mixed
      */
     public function current()
@@ -84,6 +85,7 @@ class StringIterator implements \Iterator
 
     /**
      * key iterator
+     *
      * @return mixed
      */
     public function key()
@@ -95,6 +97,7 @@ class StringIterator implements \Iterator
 
     /**
      * save the next value
+     *
      * @return mixed
      */
     public function next()
@@ -126,6 +129,7 @@ class StringIterator implements \Iterator
 
     /**
      * Validation iter param
+     *
      * @return bool
      */
     public function valid()

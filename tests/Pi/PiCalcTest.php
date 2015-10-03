@@ -8,6 +8,7 @@ require_once '../../src/Pi/PiFactory.php';
 
 /**
  * Class PiCalcTest
+ *
  * @package test
  * @author robotomize@gmail.com
  */
