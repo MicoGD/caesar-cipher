@@ -8,6 +8,7 @@ Slightly different brainteasers on PHP
 * Simple user generator
 * Dealer shuffling cards
 * INI configuration parser in an associative array
+* Pi generator class
 
 ### How set up ###
 * **@TODO create autoload**
