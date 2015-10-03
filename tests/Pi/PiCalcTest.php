@@ -4,7 +4,6 @@ namespace test;
 
 use Pi\PiFactory;
 
-require_once '../../src/Pi/PiCalc.php';
 require_once '../../src/Pi/PiFactory.php';
 
 /**
