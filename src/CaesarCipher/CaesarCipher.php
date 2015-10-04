@@ -124,8 +124,25 @@ class CaesarCipher
             $entropy_values[ $i ] = $this->calculate_entropy($test_cipher);
             $attempt_cache[ $i ] = $test_cipher;
         }
+        print_r($entropy_values);
         $lowest_entropy = array_keys($entropy_values, max($entropy_values));
+        print_r($lowest_entropy);
         return $attempt_cache[ $lowest_entropy[0] ];
+    }
+
+    /**
+     * Generates all combinations through brute force
+     *
+     * @return array
+     */
+    public function bruteForce($encodeText)
+    {
+        $result = [];
+        for ($shift = 1; $shift <= 26; $shift++) {
+
+            $result[$shift] = $this->decode($encodeText, $shift);
+        }
+        return $result;
     }
 
     /**
