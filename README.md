@@ -10,6 +10,7 @@ Slightly different brainteasers on PHP
 * INI configuration parser in an associative array
 * Pi - generator class
 * Pi - Find the offset sequence number in Pi.
+* CaesarCipher RU create and crack ciphers
 
 ### How set up ###
 * **@TODO create autoload**
