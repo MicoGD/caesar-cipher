@@ -12,7 +12,7 @@ namespace CaesarCipherRu;
  * @version 0.9.9
  * @usage
  * $tt = new CaesarCipherRu();
-   print $tt->encode('окейгугл', 3) . PHP_EOL; //Code the string with offset 3
+ *  print $tt->encode('окейгугл', 3) . PHP_EOL; //Code the string with offset 3
  *
  * Okay, interesting
  * $tt = new CaesarCipherRu();
