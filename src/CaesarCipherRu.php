@@ -137,7 +137,7 @@ class CaesarCipherRu
                 continue;
             }
 
-            $value = array_search($letter, self::$alphabet);
+            $value = array_search($letter, self::$alphabet, false);
 
             $cipherValue = $value + $offset;
             if($cipherValue > 31) {
@@ -258,7 +258,7 @@ class CaesarCipherRu
         $total = 0;
         $entropy_string = $this->mbStringToArray($entropy_string);
         for ($i =0; $i < count($entropy_string); $i++) {
-            if ($entropy_string[$i] != ' ') {
+            if ($entropy_string[$i] !== ' ') {
                 $prob = self::$frequency[$entropy_string[$i]];
                 $total += log($prob) / log(2);
             }
@@ -269,7 +269,7 @@ class CaesarCipherRu
     /**
      * @return $this|array
      */
-    function __invoke()
+    public function __invoke()
     {
         if (!empty($this->attemptCache)) {
             return $this->attemptCache;
@@ -282,7 +282,7 @@ class CaesarCipherRu
     /**
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         if (!empty($this->attemptCache)) {
             return serialize($this->attemptCache);
