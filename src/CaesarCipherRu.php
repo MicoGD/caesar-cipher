@@ -31,7 +31,8 @@ class CaesarCipherRu
      * @var array
      */
     private static $alphabet = [
-        'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж',
+        'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ф', 'ы', 'в',
+        'а', 'п', 'р', 'о', 'л', 'д', 'ж',
         'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю'
     ];
 
@@ -105,28 +106,6 @@ class CaesarCipherRu
         return self::$frequency;
     }
 
-
-    /**
-     * Change keymap to utf8 and back
-     *
-     * @param string $string
-     *
-     * @return array|string
-     */
-    private function f_str_split($string = '')
-    {
-        if (is_array($string))
-            return $string;
-
-        $string = iconv('utf-8', 'windows-1251', $string);
-
-        $array = str_split( $string );
-        foreach($array as $key => $value)
-            $array[$key] = iconv('windows-1251', 'utf-8', $value );
-
-        return $array;
-    }
-
     /**
      * @param $string
      *
@@ -153,19 +132,21 @@ class CaesarCipherRu
      */
     private function cipher($message, $offset) {
         $messageArray = $this->mbStringToArray($message);
-        foreach($messageArray as $i => $letter) {
-            if(!ctype_alpha(iconv('utf-8', 'windows-1251', $letter)))
+        foreach ($messageArray as $i => $letter) {
+            if (!ctype_alpha(iconv('utf-8', 'windows-1251', $letter))) {
                 continue;
+            }
 
             $value = array_search($letter, self::$alphabet);
 
             $cipherValue = $value + $offset;
             if($cipherValue > 31) {
                 $cipherValue = $cipherValue % 32;
-            } else if ($cipherValue < 0) {
+            } elseif ($cipherValue < 0) {
                 $cipherValue = $cipherValue % 32;
                 $cipherValue = $cipherValue + 32;
             }
+
             $messageArray[$i] = self::$alphabet[$cipherValue];
         }
         return implode($messageArray);
@@ -243,10 +224,10 @@ class CaesarCipherRu
      * @return mixed
      */
     public function crack($message) {
-        foreach(range(0, 32) as $i) {
-            $test_cipher = $this->decode($message, $i * -1);
-            $this->entropyValues[$i] = $this->calculateEntropy($test_cipher);
-            $this->attemptCache[$i] = $test_cipher;
+        foreach (range(0, 32) as $i) {
+            $testCipher = $this->decode($message, $i * -1);
+            $this->entropyValues[$i] = $this->calculateEntropy($testCipher);
+            $this->attemptCache[$i] = $testCipher;
         }
         $this->lowestEntropy = array_keys($this->entropyValues, max($this->entropyValues));
         return $this->attemptCache[$this->lowestEntropy[0]];
@@ -267,17 +248,6 @@ class CaesarCipherRu
     }
 
     /**
-     * @deprecated
-     */
-    private function arrayConvert()
-    {
-        $convArr = self::$frequency;
-        foreach($convArr as $key => $value)
-            self::$frequency[$key] = iconv('windows-1251', 'utf-8', $value);
-
-    }
-
-    /**
      * Calculates the entropy of a string based on known frequency of English letters
      *
      * @param $entropy_string
@@ -287,8 +257,8 @@ class CaesarCipherRu
     private function calculateEntropy($entropy_string) {
         $total = 0;
         $entropy_string = $this->mbStringToArray($entropy_string);
-        for($i =0; $i < count($entropy_string); $i++) {
-            if($entropy_string[$i] != ' ') {
+        for ($i =0; $i < count($entropy_string); $i++) {
+            if ($entropy_string[$i] != ' ') {
                 $prob = self::$frequency[$entropy_string[$i]];
                 $total += log($prob) / log(2);
             }
@@ -320,6 +290,4 @@ class CaesarCipherRu
             return serialize($this);
         }
     }
-
-
 }

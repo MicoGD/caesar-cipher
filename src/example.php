@@ -1,22 +1,21 @@
 <?php
 
-namespace CaesarCipherru;
+namespace CaesarCipherRu;
 
-include 'CaesarCipherRu.php';
+include 'CaesarCipherRuFactory.php';
 
 /**
  *
  */
-$tt = new CaesarCipherRu();
-print $tt->encode('окейгугл', 3) . PHP_EOL;
-
-print $tt->crack('') . PHP_EOL;
+print CaesarCipherRuFactory::encode('твоя русский язык', 25) . PHP_EOL;
+print CaesarCipherRuFactory::decode('цячущя эшббщйн цзщбц', 5) . PHP_EOL;
+print CaesarCipherRuFactory::crack('жгшкзнзэ') . PHP_EOL;
 
 /**
  * Some iterate matrix
  */
 foreach(range(1, 32) as $values) {
-    print sprintf('key: %s - value: %s', $values, $tt->encode('', $values) . PHP_EOL);
+    print sprintf('key: %s - value: %s', $values, CaesarCipherRuFactory::encode('окейгугл', $values) . PHP_EOL);
 }
 
 

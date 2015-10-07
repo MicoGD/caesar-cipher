@@ -4,13 +4,22 @@ Powered by calculating the smallest value of entropy.
 
 ### What is this repository for? ###
 
-* Ru characters
-* Ru crack CaesarCipher
+* Ru version CaesarCipher
 
 ### How do I get set up? ###
 
 * **git clone https://robotomize@bitbucket.org/robotomize/caesarcipherru.git**
 * php -q example.php
-* view @usage text
-* Expand my class
-* Write tests
+
+### Usage ###
+```
+namespace CaesarCipherru;
+
+include 'CaesarCipherRuFactory.php';
+
+print CaesarCipherRuFactory::encode('твоя русский язык', 25) . PHP_EOL;
+print CaesarCipherRuFactory::decode('жшъп хиоотдс пугт', 25) . PHP_EOL;
+
+print CaesarCipherRuFactory::crack('жшъп хиоотдс пугт') . PHP_EOL;
+
+```
