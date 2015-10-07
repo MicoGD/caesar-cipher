@@ -13,6 +13,8 @@ Powered by calculating the smallest value of entropy.
 
 ### Usage ###
 ```
+<?php
+
 namespace CaesarCipherru;
 
 include 'CaesarCipherRuFactory.php';
