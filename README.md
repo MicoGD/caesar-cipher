@@ -1,15 +1,16 @@
 ## CaesarCipherRu ##
 This cracker Caesar cipher for the Russian language.
-Powered by calculating the smallest value of entropy.
+Powered by calculating the smallest value of entropy. This is a training version of the cipher
 
 ### What is this repository for? ###
 
-* Ru version CaesarCipher
+* Hack and encrypt the Caesar cipher in Russian.
 
 ### How do I get set up? ###
 
-* git clone https://robotomize@bitbucket.org/robotomize/caesarcipherru.git
+* git clone https://robotomize@bitbucket.org/robotomize/caesarcipheru.git
 * php -q example.php
+* expand this
 
 ### Basic Usage ###
 #### With Factory ####
