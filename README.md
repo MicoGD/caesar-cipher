@@ -1,4 +1,4 @@
-# CaesarCipherRu #
+## CaesarCipherRu ##
 This cracker Caesar cipher for the Russian language.
 Powered by calculating the smallest value of entropy.
 
@@ -8,14 +8,15 @@ Powered by calculating the smallest value of entropy.
 
 ### How do I get set up? ###
 
-* **git clone https://robotomize@bitbucket.org/robotomize/caesarcipherru.git**
+* git clone https://robotomize@bitbucket.org/robotomize/caesarcipherru.git
 * php -q example.php
 
-### Usage ###
-```
+### Basic Usage ###
+#### With Factory ####
+```php
 <?php
 
-namespace CaesarCipherru;
+namespace CaesarCipherRu;
 
 include 'CaesarCipherRuFactory.php';
 
@@ -25,3 +26,20 @@ print CaesarCipherRuFactory::decode('жшъп хиоотдс пугт', 25) . PH
 print CaesarCipherRuFactory::crack('жшъп хиоотдс пугт') . PHP_EOL;
 
 ```
+
+#### Simple with object ####
+
+```php
+<?php
+namespace CaesarCipherRu;
+
+include 'CaesarCipherRuFactory.php';
+
+$testCipher = new CaesarCipherRu();
+
+print $testCipher->encode('твоя русский язык', 25) . PHP_EOL;
+print $testCipher->decode('жшъп хиоотдс пугт', 25) . PHP_EOL;
+
+print $testCipher->crack('жшъп хиоотдс пугт') . PHP_EOL;
+```
+
