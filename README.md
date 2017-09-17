@@ -1,4 +1,4 @@
-## CaesarCipherRu ##
+## Caesar Cipher ##
 This cracker Caesar cipher for the Russian language.
 Powered by calculating the smallest value of entropy. This is a training version of the cipher
 
